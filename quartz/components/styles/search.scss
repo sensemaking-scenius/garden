@@ -3,6 +3,7 @@
 .search {
   min-width: fit-content;
   max-width: 14rem;
+  z-index: 105;
   @media all and ($mobile) {
     flex-grow: 0.3;
   }
@@ -48,6 +49,7 @@
     z-index: 999;
     left: 0;
     top: 0;
+    padding: 0 !important;
     width: 100vw;
     height: 100vh;
     overflow-y: auto;
@@ -64,7 +66,7 @@
       margin-left: auto;
       margin-right: auto;
 
-      @media all and not ($desktop) {
+      @media all and ($desktop) {
         width: 90%;
       }
 
@@ -151,7 +153,6 @@
         }
 
         & > #preview-container {
-          flex-grow: 1;
           display: block;
           overflow: hidden;
           font-family: inherit;

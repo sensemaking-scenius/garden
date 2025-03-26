@@ -55,7 +55,7 @@
 
     & > #global-graph-container {
       border: 1px solid var(--lightgray);
-      background-color: var(--light);
+      background-color: var(--light) !important;
       border-radius: 5px;
       box-sizing: border-box;
       position: fixed;
@@ -65,7 +65,7 @@
       height: 80vh;
       width: 80vw;
 
-      @media all and not ($desktop) {
+      @media all and ($desktop) {
         width: 90%;
       }
     }

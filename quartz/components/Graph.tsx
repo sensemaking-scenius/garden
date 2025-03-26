@@ -18,7 +18,6 @@ export interface D3Config {
   removeTags: string[]
   showTags: boolean
   focusOnHover?: boolean
-  enableRadial?: boolean
 }
 
 interface GraphOptions {
@@ -40,7 +39,6 @@ const defaultOptions: GraphOptions = {
     showTags: true,
     removeTags: [],
     focusOnHover: false,
-    enableRadial: false,
   },
   globalGraph: {
     drag: true,
@@ -55,11 +53,10 @@ const defaultOptions: GraphOptions = {
     showTags: true,
     removeTags: [],
     focusOnHover: true,
-    enableRadial: true,
   },
 }
 
-export default ((opts?: Partial<GraphOptions>) => {
+export default ((opts?: GraphOptions) => {
   const Graph: QuartzComponent = ({ displayClass, cfg }: QuartzComponentProps) => {
     const localGraph = { ...defaultOptions.localGraph, ...opts?.localGraph }
     const globalGraph = { ...defaultOptions.globalGraph, ...opts?.globalGraph }
@@ -104,6 +101,20 @@ export default ((opts?: Partial<GraphOptions>) => {
 
   Graph.css = style
   Graph.afterDOMLoaded = script
+
+  // Add custom CSS for light background
+  Graph.css += `
+    .graph {
+      background-color: var(--light);
+      padding: 1rem;
+      border-radius: 5px;
+      margin-bottom: 1rem;
+    }
+    
+    .dark .graph {
+      background-color: var(--dark);
+    }
+  `
 
   return Graph
 }) satisfies QuartzComponentConstructor

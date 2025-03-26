@@ -1,14 +1,15 @@
 import { QuartzConfig } from "./quartz/cfg"
 import * as Plugin from "./quartz/plugins"
+import { DashboardTiles } from "./quartz/plugins/transformers/dashboardTiles"
 
 /**
- * Quartz 4 Configuration
+ * Quartz 4.0 Configuration
  *
  * See https://quartz.jzhao.xyz/configuration for more information.
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "🪴 Quartz 4",
+    pageTitle: "Home",
     pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,
@@ -16,10 +17,9 @@ const config: QuartzConfig = {
       provider: "plausible",
     },
     locale: "en-US",
-    baseUrl: "quartz.jzhao.xyz",
+    baseUrl: "www.scenius.space",
     ignorePatterns: ["private", "templates", ".obsidian"],
     defaultDateType: "created",
-    generateSocialImages: true,
     theme: {
       fontOrigin: "googleFonts",
       cdnCaching: true,
@@ -35,9 +35,9 @@ const config: QuartzConfig = {
           gray: "#b8b8b8",
           darkgray: "#4e4e4e",
           dark: "#2b2b2b",
-          secondary: "#284b63",
-          tertiary: "#84a59d",
-          highlight: "rgba(143, 159, 169, 0.15)",
+          secondary: "rgb(158, 67, 165)",
+          tertiary: "rgb(207, 92, 215)",
+          highlight: "rgba(185, 169, 153, 0.15)",
           textHighlight: "#fff23688",
         },
         darkMode: {
@@ -46,9 +46,9 @@ const config: QuartzConfig = {
           gray: "#646464",
           darkgray: "#d4d4d4",
           dark: "#ebebec",
-          secondary: "#7b97aa",
-          tertiary: "#84a59d",
-          highlight: "rgba(143, 159, 169, 0.15)",
+          secondary: "rgb(158, 67, 165)",
+          tertiary: "rgb(207, 92, 215)",
+          highlight: "rgba(185, 169, 153, 0.15)",
           textHighlight: "#b3aa0288",
         },
       },
@@ -73,6 +73,7 @@ const config: QuartzConfig = {
       Plugin.CrawlLinks({ markdownLinkResolution: "shortest" }),
       Plugin.Description(),
       Plugin.Latex({ renderEngine: "katex" }),
+      DashboardTiles(),
     ],
     filters: [Plugin.RemoveDrafts()],
     emitters: [
