@@ -55,7 +55,7 @@ const Header: QuartzComponentConstructor<Options> = (opts) => {
             {Object.entries(links).map(([text, href]) => (
               <a key={href} href={href}>{text}</a>
             ))}
-            <a href="/index.md">Home</a>
+            <a href="/index.md">Home Test</a>
           </div>
         </div>
 
